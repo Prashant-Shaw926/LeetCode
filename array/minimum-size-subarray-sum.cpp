@@ -10,26 +10,28 @@ public:
             }
         }
         int minLen = INT_MAX, len = 0;
-        int i = 0, j = i + 1;
+        int i = 0, j = 0;
         long long sum = nums[i];
 
-        i = 0;
         while (j < n) {
             if (nums[i] >= target) {
                 return 1;
             }
-            sum += nums[j];
             if (sum >= target) {
                 len = (j - i) + 1;
                 if (len <= minLen) {
                     minLen = len;
-                    i++;
-                    j = i + 1;
-                    sum = nums[i];
                 }
+                sum -= nums[i];
+                i++;
+                continue;
             } else {
                 j++;
+                if (j == n) {
+                    break;
+                }
             }
+            sum += nums[j];
         }
 
         return minLen == INT_MAX ? 0 : minLen;
