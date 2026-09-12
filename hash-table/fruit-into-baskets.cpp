@@ -2,6 +2,9 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         int n = fruits.size();
+        if(n==1){
+            return 1;
+        }
         int i = 0, j = 0, count = 0;
         int tempA = fruits[i], tempB = fruits[i];
         int result = INT_MIN;
