@@ -14,11 +14,13 @@ public:
             freq[fruits[j]]++;
             if (freq.size() > 2) {
                 temp = fruits[i];
-                while (freq[temp] != 0) {
+                while (freq[temp] != 0 && fruits[i] == temp) {
                     freq[temp]--;
                     i++;
                 }
-                freq.erase(temp);
+                if(freq[temp] == 0){
+                    freq.erase(temp);
+                }
             }
             int length = j - i + 1;
             result = max(result, length);
